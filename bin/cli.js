@@ -3,6 +3,33 @@
 const packageJSON = require(process.cwd() + '/package.json');
 const fs = require('node:fs');
 
+if (packageJSON.bl2bl.savePrevious) {
+    // Check if .browserslistrc exists
+    fs.access(process.cwd() + '/.browserslistrc', fs.constants.F_OK, (err) => {
+        if (!err) {
+            // Read the contents of .browserslistrc
+            fs.readFile(process.cwd() + '/.browserslistrc', 'utf8', (err, data) => {
+                if (err) throw err;
+                // Write the contents to .browserslistrc_backup
+                fs.writeFile(process.cwd() + '/.browserslistrc_backup', data, (err) => {
+                    if (err) throw err;
+                });
+            });
+        } else {
+            // Check if packageJSON.browserslist exists
+            if (packageJSON.browserslist) {
+                // Write each item of the array on a new line in .browserslistrc_backup
+                const backupData = packageJSON.browserslist.join('\n');
+                fs.writeFile(process.cwd() + '/.browserslistrc_backup', backupData, (err) => {
+                    if (err) throw err;
+                });
+            } else {
+                console.log("No existing browserslist configuration, skipping backup.");
+            }
+        }
+    });
+}
+
 const getBaselineVersions = require(process.cwd() + '/node_modules/bl2bl/get-baseline-versions.js').getBaselineVersions;
 
 let baselineVersions;
