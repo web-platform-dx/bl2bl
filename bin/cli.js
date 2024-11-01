@@ -4,30 +4,28 @@ const packageJSON = require(process.cwd() + '/package.json');
 const fs = require('node:fs');
 
 if (packageJSON.bl2bl.savePrevious) {
+    let backupMessage = "# backup file created by bl2bl at " + new Date().toLocaleString() + '\n';
     // Check if .browserslistrc exists
-    fs.access(process.cwd() + '/.browserslistrc', fs.constants.F_OK, (err) => {
-        if (!err) {
+    // fs.readSync(process.cwd() + '/.browserslistrc', fs.constants.R_OK, (err, fd) => {
+
+        if (fs.existsSync(process.cwd() + '/.browserslistrc')) {
             // Read the contents of .browserslistrc
-            fs.readFile(process.cwd() + '/.browserslistrc', 'utf8', (err, data) => {
-                if (err) throw err;
-                // Write the contents to .browserslistrc_backup
-                fs.writeFile(process.cwd() + '/.browserslistrc_backup', data, (err) => {
-                    if (err) throw err;
-                });
-            });
+            let browserslistrcData = fs.readFileSync(process.cwd() + '/.browserslistrc', {encoding: 'utf8'});
+            // And write it to a backupfile
+            fs.writeFileSync(process.cwd() + '/.browserslistrc_backup', (backupMessage+browserslistrcData), { encoding: 'utf8' });
+
         } else {
             // Check if packageJSON.browserslist exists
             if (packageJSON.browserslist) {
                 // Write each item of the array on a new line in .browserslistrc_backup
                 const backupData = packageJSON.browserslist.join('\n');
-                fs.writeFile(process.cwd() + '/.browserslistrc_backup', backupData, (err) => {
-                    if (err) throw err;
-                });
+                fs.writeFileSync(process.cwd() + '/.browserslistrc_backup', (backupMessage+backupData), {encoding: 'utf8'});
             } else {
                 console.log("No existing browserslist configuration, skipping backup.");
             }
         }
-    });
+    // });
+
 }
 
 const getBaselineVersions = require(process.cwd() + '/node_modules/bl2bl/get-baseline-versions.js').getBaselineVersions;
