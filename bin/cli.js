@@ -28,6 +28,8 @@ if (
 
 if (bl2blConfig.downstreamBrowsers === true) {
     const getDownstreamBrowsers = require(process.cwd() + '/node_modules/bl2bl/get-downstream-browsers.js').getDownstreamBrowsers;
+    const downstreamVersions = getDownstreamBrowsers(baselineVersions);
+    baselineVersions = baselineVersions.concat(downstreamVersions);
 }
 
 console.log(packageJSON);

@@ -15,10 +15,39 @@ const browsers = [
 TODO: we don't have a good mapping for QQ and UC browsers to Chromium.  
 Where does that exist?  Where did Philip get his mappings from?
 */
-const browsersListNamesMapping = {};
+const browsersListNamesMapping = {
+    "webview_android": "android",
+    "samsunginternet_android": "Samsung",
+    "opera_android": "op_mob",
+    "opera": "opera"
+};
 
-function getDownsteamBrowsers(baselineVersions) {
+function getDownstreamBrowsers(baselineVersions) {
+    const downstreamBrowsers = [];
 
+    browsers.forEach(([downstream, upstream, browserslistKey]) => {
+        const upstreamVersion = baselineVersions.find(version => version.includes(upstream));
+        if (upstreamVersion) {
+            const upstreamVersionNumber = parseInt(upstreamVersion.split('>=')[1].trim());
+            const downstreamReleases = bcd.browsers[downstream].releases;
+
+            let minVersion = null;
+
+            Object.entries(downstreamReleases).forEach(([version, data]) => {
+                if (data.engine === 'Blink' && parseInt(data.engine_version) >= upstreamVersionNumber) {
+                    if (!minVersion || parseInt(version) < parseInt(minVersion)) {
+                        minVersion = version;
+                    }
+                }
+            });
+
+            if (minVersion) {
+                downstreamBrowsers.push(`${browsListNamesMapping[downstream]} >= ${minVersion}`);
+            }
+        }
+    });
+
+    return downstreamBrowsers;
 }
 
-module.exports = { getDownsteamBrowsers }
+module.exports = { getDownstreamBrowsers }
