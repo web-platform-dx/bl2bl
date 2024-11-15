@@ -90,12 +90,15 @@ if (!bl2blConfig.useBrowserslistrc) {
     }
 }
 
-// Whatever happens, update package.json 
-fs.writeFile(process.cwd() + '/package.json', JSON.stringify(packageJSON, null, 2), err => {
-    if (err) {
-        console.error(err);
-    } else {
-        // file written successfully
-        // process.exit();
-    }
-});
+// Whatever happens, update package.json as long as the packageJSON object isn't null
+if (packageJSON != null) {
+    fs.writeFile(process.cwd() + '/package.json', JSON.stringify(packageJSON, null, 2), err => {
+        if (err) {
+            console.error(err);
+        } else {
+            // file written successfully
+            // process.exit();
+        }
+    });
+}
+
