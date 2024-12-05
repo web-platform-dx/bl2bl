@@ -1,15 +1,17 @@
 {
   "name": "bl2bl",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A tool that ",
   "main": "get-baseline-versions.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
   },
   "author": "",
   "license": "ISC",
   "bin": "./bin/cli.js",
   "dependencies": {
-    "@mdn/browser-compat-data": "latest"
+    "@mdn/browser-compat-data": "latest",
+    "baseline-browser-mapping": "latest"
   }
 }
