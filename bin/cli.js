@@ -21,7 +21,18 @@ import("baseline-browser-mapping").then((bbm) => {
 
   const fs = require("node:fs");
 
-  if (packageJSON.bl2bl.savePrevious) {
+
+  let incomingConfig = packageJSON.bl2bl ? packageJSON.bl2bl : {};
+  const bl2blConfig = {
+    baselineThreshold: incomingConfig.baselineThreshold ? incomingConfig.baselineThreshold : "widely available",
+    useBrowserslistrc: incomingConfig.useBrowserslistrc ? incomingConfig.useBrowserslistrc : false,
+    downstreamBrowsers: incomingConfig.downstreamBrowsers ? incomingConfig.downstreamBrowsers : false,
+    savePrevious: incomingConfig.savePrevious ? incomingConfig.savePrevious : true,
+  }
+
+  packageJSON.bl2bl = bl2blConfig;
+
+  if (bl2blConfig.savePrevious === true) {
     let backupMessage =
       "# backup file created by bl2bl at " + new Date().toLocaleString() + "\n";
 
@@ -57,13 +68,11 @@ import("baseline-browser-mapping").then((bbm) => {
   let baselineVersions;
   let browserslistOutput = new Array();
 
-  const bl2blConfig = packageJSON.bl2bl;
-
   // If the user wants Baseline Widely Available
   if (bl2blConfig.baselineThreshold === "widely available") {
     // Get the minimum Baseline widely available versions
     baselineVersions = bbm.getMinimumWidelyAvailable(
-      packageJSON.bl2bl.downstreamBrowsers,
+      bl2blConfig.downstreamBrowsers,
     );
   } else if (
     // If they've passed a valid year, i.e. after BL starts and not the current or future years

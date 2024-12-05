@@ -7,7 +7,7 @@ A module for turning Baseline thresholds into `browserslist` configurations.
 You can install `bl2bl` with `npm`:
 
 ```
-npm i https://github.com/tonypconway/bl2bl
+npm i bl2bl
 ```
 
 ## Usage
