@@ -6,7 +6,7 @@ A module for turning Baseline thresholds into `browserslist` configurations.
 
 You can install `bl2bl` with `npm`:
 
-```
+```bash
 npm i bl2bl
 ```
 
@@ -14,13 +14,13 @@ npm i bl2bl
 
 To update your `browserslist` config, run the following command:
 
-```
+```bash
 npx bl2bl
 ```
 
 `bl2bl` uses `@mdn/browser-compat-data` as a data source and will install the latest version of `@mdn/browser-compat-data` on install. However, is strongly recommended that you update `@mdn/browser-compat-data` regularly, or every time you run `npx bl2bl`, especially if you are targeting Baseline Widely available. You can automate this by adding a command to your `package.json` `scripts` array which updates `@mdn/browser-compat-data` before running `npx bl2bl`:
 
-```
+```json
 "scripts": {
   "refresh-bl2bl": "npm i @mdn/browser-compat-data@latest; npx bl2bl"
 }
@@ -32,7 +32,7 @@ Make sure to configure `bl2bl` before use.
 
 If you don't add a `bl2bl` property to your `package.json` file, the following defaults will apply:
 
-```
+```json
 "bl2bl" : {
   "baselineThreshold": "widely available",
   "useBrowserslistrc": false,
