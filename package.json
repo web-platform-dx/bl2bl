@@ -1,17 +1,25 @@
 {
   "name": "bl2bl",
-  "version": "0.1.0",
-  "description": "A tool that ",
+  "version": "0.1.1",
+  "description": "A tool that turns Web Platform Baseline targets into browserslist configurations.",
   "main": "get-baseline-versions.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky install"
+    "prepare": "npx prettier . --write"
   },
+  "files": [
+    "bin",
+    "LICENSE.txt",
+    "README.md"
+  ],
   "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bin": "./bin/cli.js",
   "dependencies": {
     "@mdn/browser-compat-data": "latest",
     "baseline-browser-mapping": "latest"
+  },
+  "devDependencies": {
+    "prettier": "3.4.2"
   }
 }
