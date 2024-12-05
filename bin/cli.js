@@ -21,14 +21,21 @@ import("baseline-browser-mapping").then((bbm) => {
 
   const fs = require("node:fs");
 
-
   let incomingConfig = packageJSON.bl2bl ? packageJSON.bl2bl : {};
   const bl2blConfig = {
-    baselineThreshold: incomingConfig.baselineThreshold ? incomingConfig.baselineThreshold : "widely available",
-    useBrowserslistrc: incomingConfig.useBrowserslistrc ? incomingConfig.useBrowserslistrc : false,
-    downstreamBrowsers: incomingConfig.downstreamBrowsers ? incomingConfig.downstreamBrowsers : false,
-    savePrevious: incomingConfig.savePrevious ? incomingConfig.savePrevious : true,
-  }
+    baselineThreshold: incomingConfig.baselineThreshold
+      ? incomingConfig.baselineThreshold
+      : "widely available",
+    useBrowserslistrc: incomingConfig.useBrowserslistrc
+      ? incomingConfig.useBrowserslistrc
+      : false,
+    downstreamBrowsers: incomingConfig.downstreamBrowsers
+      ? incomingConfig.downstreamBrowsers
+      : false,
+    savePrevious: incomingConfig.savePrevious
+      ? incomingConfig.savePrevious
+      : true,
+  };
 
   packageJSON.bl2bl = bl2blConfig;
 
