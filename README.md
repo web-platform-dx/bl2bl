@@ -18,11 +18,11 @@ To update your `browserslist` config, run the following command:
 npx bl2bl
 ```
 
-`bl2bl` uses `@mdn/browser-compat-data` as a data source and will install the latest version of `@mdn/browser-compat-data` on install. However, is strongly recommended that you update `@mdn/browser-compat-data` regularly, or every time you run `npx bl2bl`, especially if you are targeting Baseline Widely available. You can automate this by adding a command to your `package.json` `scripts` array which updates `@mdn/browser-compat-data` before running `npx bl2bl`:
+`bl2bl` uses `@mdn/browser-compat-data` and `baseline-browser-mapping` data sources and will install the latest version of each of them on install. However, it is strongly recommended that you update these modules regularly, or every time you run `npx bl2bl`, especially if you are targeting Baseline Widely available or Chromium downstream browsers. You can automate this by adding a command to your `package.json` `scripts` array which updates `@mdn/browser-compat-data` and `baseline-browser-mapping` before running `npx bl2bl`:
 
 ```json
 "scripts": {
-  "refresh-bl2bl": "npm i @mdn/browser-compat-data@latest; npx bl2bl"
+  "execute-bl2bl": "npm i @mdn/browser-compat-data@latest baseline-browser-mapping@latest; npx bl2bl"
 }
 ```
 
