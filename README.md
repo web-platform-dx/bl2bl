@@ -1,6 +1,6 @@
 # bl2bl
 
-A module for turning Baseline thresholds into `browserslist` configurations.
+A module for turning [Baseline](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) targets into [`browserslist`](https://github.com/browserslist/browserslist) configurations. This allows you to easily target Baseline in the many developer tools that rely on `browserslist` for building, polyfilling, syntax highlighting and more.
 
 ## Installation
 
@@ -77,7 +77,7 @@ For example, setting `baselineThreshold` to `2021` will produce the following `b
     "and_uc >= 15.3",
     "and_qq >= 13.4"
   ]
-  ```
+```
 
 For more information on how these mappings are created, please see [the `baseline-browser-mapping` README](https://www.npmjs.com/package/baseline-browser-mapping).
 
