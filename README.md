@@ -59,7 +59,27 @@ If you pass an invalid string, or an integer below 2016 or above the previous ca
 
 There are many browsers that depend on another browser's engine and therefore support an identical feature set. For example, [Opera 115 implements Blink 129](https://github.com/mdn/browser-compat-data/blob/037fce457e530715679ce4ae4b318aa18904bea8/browsers/opera.json#L863) and therefore has the same web platform feature support as Chrome 129. Setting `downstreamBrowsers` to true will select minimum browser versions from other vendors that correspond to the minimum versions of the core browser set browsers you have selected.
 
-TODO: include an example here
+For example, setting `baselineThreshold` to `2021` will produce the following `browserslist` config:
+
+```
+"browserslist": [
+    "Chrome >= 96",
+    "ChromeAndroid >= 96",
+    "Edge >= 96",
+    "Firefox >= 95",
+    "FirefoxAndroid >= 94",
+    "Safari >= 15.2",
+    "iOS >= 15.2",
+    "Opera >= 82",
+    "op_mob >= 67",
+    "Samsung >= 17.0",
+    "Android >= 96",
+    "and_uc >= 15.3",
+    "and_qq >= 13.4"
+  ]
+  ```
+
+For more information on how these mappings are created, please see [the `baseline-browser-mapping` README](https://www.npmjs.com/package/baseline-browser-mapping).
 
 ### `savePrevious`
 
