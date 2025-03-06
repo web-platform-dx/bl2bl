@@ -122,7 +122,7 @@ import("baseline-browser-mapping").then((bbm) => {
     });
     // write a header comment so it's clear where the config comes from
     outputFile.write(
-      "# This file was created by bl2bl2. \n# Learn more at https://github.com/tonypconway/bl2bl\n",
+      "# This file was created by bl2bl2. \n# Learn more at https://github.com/web-platform-dx/bl2bl\n",
     );
     // then write each min browser version to the output file
     browserslistOutput.forEach(function (v) {
