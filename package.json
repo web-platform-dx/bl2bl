@@ -1,6 +1,6 @@
 {
   "name": "bl2bl",
-  "version": "0.2.0",
+  "version": "0.2.0-beta.1",
   "description": "A tool that turns Web Platform Baseline targets into browserslist configurations.",
   "main": "get-baseline-versions.js",
   "scripts": {
