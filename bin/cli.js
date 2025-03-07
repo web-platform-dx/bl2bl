@@ -71,7 +71,7 @@ import("baseline-browser-mapping").then((bbm) => {
   if (bl2blConfig.baselineThreshold === "widely available") {
     // Get the minimum Baseline widely available versions
     baselineVersions = bbm.getCompatibleVersions({
-      listAllCompatibleVersions: bl2blConfig.downstreamBrowsers,
+      includeDownstreamBrowsers: bl2blConfig.downstreamBrowsers,
     });
     // If the user wants Widely Available on a specific date
   } else if (
@@ -82,7 +82,7 @@ import("baseline-browser-mapping").then((bbm) => {
     // Get the versions that corresponded to WA on that date
     baselineVersions = bbm.getCompatibleVersions({
       widelyAvailableOnDate: bl2blConfig.baselineThreshold,
-      listAllCompatibleVersions: bl2blConfig.downstreamBrowsers,
+      includeDownstreamBrowsers: bl2blConfig.downstreamBrowsers,
     });
   } else if (
     // If they've passed a valid year, i.e. after BL starts and not the current or future years
@@ -92,7 +92,7 @@ import("baseline-browser-mapping").then((bbm) => {
     // Get the versions that correspond to those years
     baselineVersions = bbm.getCompatibleVersions({
       targetYear: bl2blConfig.baselineThreshold,
-      listAllCompatibleVersions: bl2blConfig.downstreamBrowsers,
+      includeDownstreamBrowsers: bl2blConfig.downstreamBrowsers,
     });
   } else {
     // If the baselineThreshold doesn't meet any of those criteria, there's a problem.  Time to bounce.
