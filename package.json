@@ -21,5 +21,9 @@
   },
   "devDependencies": {
     "prettier": "3.4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/web-platform-dx/bl2bl"
   }
 }
