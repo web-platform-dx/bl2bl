@@ -1,6 +1,6 @@
 {
   "name": "bl2bl",
-  "version": "0.2.0-beta.2",
+  "version": "0.2.0",
   "description": "A tool that turns Web Platform Baseline targets into browserslist configurations.",
   "main": "get-baseline-versions.js",
   "scripts": {
@@ -17,7 +17,7 @@
   "bin": "./bin/cli.js",
   "dependencies": {
     "@mdn/browser-compat-data": "latest",
-    "baseline-browser-mapping": "^2.0.0-beta.1"
+    "baseline-browser-mapping": "latest"
   },
   "devDependencies": {
     "prettier": "3.4.2"
