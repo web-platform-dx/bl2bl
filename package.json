@@ -1,6 +1,6 @@
 {
   "name": "bl2bl",
-  "version": "0.1.8",
+  "version": "0.2.0",
   "description": "A tool that turns Web Platform Baseline targets into browserslist configurations.",
   "main": "get-baseline-versions.js",
   "scripts": {
@@ -21,5 +21,9 @@
   },
   "devDependencies": {
     "prettier": "3.4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/web-platform-dx/bl2bl"
   }
 }

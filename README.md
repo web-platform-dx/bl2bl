@@ -45,11 +45,13 @@ If you don't add a `bl2bl` property to your `package.json` file, the following d
 
 This property determines which browsers your target and can take two value types: a string reading `widely available` or an integer representing the Baseline year required in the format `YYYY`.
 
-Using `widely available` will select the last version of each of the Baseline core browser set released _exactly 30 months before the time of execution_.
+Using `widely available` will select the minimum version of each browser that is compatible with the current Baseline Widely Available feature set.
 
-Using a year in the format `YYYY` will select the last version of each of the Baseline core browser set released in the specified year. This may change in future releases to select earlier version of browsers which support the full Baseline feature set that calendar year.
+Using a date in the format `YYYY-MM-DD` will select the minimum version of each browser that was compatible with all Baseline Widely Available features on the specified date.
 
-If you pass an invalid string, or an integer below 2016 or above the previous calendar year, `bl2bl` will throw an error and not process any changes.
+Using a year in the format `YYYY` will select the minimum version of each browser that is compatible with all features that were Baseline Newly Available at the end of the given year.
+
+If you pass an invalid string, or an integer below `2016` or above the previous calendar year, or a `YYYY-MM-DD` string too far into the future, `bl2bl` will throw an error and not process any changes.
 
 ### `useBrowserslistrc`
 
